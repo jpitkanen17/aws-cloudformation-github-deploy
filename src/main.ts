@@ -109,7 +109,7 @@ export async function run(): Promise<void> {
 
     // CloudFormation Stack Parameter for the creation or update
     const params: CreateStackInput = {
-      StackName: stackName,
+      StackName: stackName.trim(),
       Capabilities: [...capabilities.split(',').map(cap => cap.trim())],
       RoleARN: roleARN,
       NotificationARNs: notificationARNs,

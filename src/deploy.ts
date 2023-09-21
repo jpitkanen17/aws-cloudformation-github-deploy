@@ -110,6 +110,7 @@ async function getStack(
         StackName: stackNameOrId
       })
       .promise()
+    core.debug(JSON.stringify(stacks.Stacks, null, 2))
     return stacks.Stacks?.[0]
   } catch (e) {
     // @ts-expect-error: Object is of type 'unknown'

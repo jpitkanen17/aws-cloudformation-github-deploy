@@ -71,15 +71,16 @@ export function parseParameters(parameterOverrides: string): Parameter[] {
     })
 
   return [...parameters.keys()].map(key => {
-    if (parameters.get(key) === 'usePrevious') {
+    if (parameters.get(key) == 'usePrevious') {
       return {
         ParameterKey: key,
         UsePreviousValue: true
       }
-    }
-    return {
-      ParameterKey: key,
-      ParameterValue: parameters.get(key)
+    } else {
+      return {
+        ParameterKey: key,
+        ParameterValue: parameters.get(key)
+      }
     }
   })
 }

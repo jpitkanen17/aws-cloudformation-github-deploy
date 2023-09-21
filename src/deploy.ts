@@ -1,6 +1,7 @@
 import * as core from '@actions/core'
 import * as aws from 'aws-sdk'
 import { CreateChangeSetInput, CreateStackInput } from './main'
+import { mergeParams } from './utils'
 
 export type Stack = aws.CloudFormation.Stack
 
@@ -151,7 +152,7 @@ export async function deployStack(
         StackName: params.StackName,
         TemplateBody: params.TemplateBody,
         TemplateURL: params.TemplateURL,
-        Parameters: params.Parameters,
+        Parameters: mergeParams(params.Parameters, stack.Parameters),
         Capabilities: params.Capabilities,
         ResourceTypes: params.ResourceTypes,
         RoleARN: params.RoleARN,

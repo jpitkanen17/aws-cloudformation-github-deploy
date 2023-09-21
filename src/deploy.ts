@@ -146,7 +146,7 @@ export async function deployStack(
     cfn,
     stack,
     {
-      ChangeSetName: `${params.StackName}-CS`,
+      ChangeSetName: `${params.StackName.split('/')[0]}-CS`,
       ...{
         StackName: params.StackName,
         TemplateBody: params.TemplateBody,

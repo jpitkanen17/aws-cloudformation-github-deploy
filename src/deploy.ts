@@ -113,6 +113,7 @@ async function getStack(
     core.debug(JSON.stringify(stacks.Stacks, null, 2))
     return stacks.Stacks?.[0]
   } catch (e) {
+    core.debug(JSON.stringify(e, null, 2))
     // @ts-expect-error: Object is of type 'unknown'
     if (e.code === 'ValidationError' && e.message.match(/does not exist/)) {
       return undefined
